@@ -24,7 +24,7 @@ module Edurange
           name = user['login']
           stuff = <<stuff
           
-#Adds a user, checks their password, and makes a directory
+# Adds a user, checks their password, and makes a directory
 useradd -m #{name} -g admin -s /bin/bash
 echo "#{name}:password" | chpasswd
 mkdir -p /home/#{name}/.ssh
@@ -33,7 +33,7 @@ key='#{user['pass_file'].chomp}'
 gen_pub='#{user["generated_pub"]}'
 gen_priv='#{user["generated_priv"]}'
 
-#Checks their keys
+# Checks their keys
 echo $gen_pub >> /home/#{name}/.ssh/authorized_keys
 echo $gen_priv >> /home/#{name}/.ssh/id_rsa
 echo $gen_pub >> /home/#{name}/.ssh/id_rsa.pub
